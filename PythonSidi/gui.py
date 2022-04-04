@@ -16,7 +16,6 @@ class Window(QWidget):
         
         grid = QGridLayout()
         grid2 = QGridLayout()
-        grid3 = QGridLayout()
 
         hbox = QHBoxLayout()
 
@@ -33,24 +32,26 @@ class Window(QWidget):
         btn.clicked.connect(move)
         btn.setMaximumWidth(100)
         grid2.addWidget(btn,5,0)
+        
+        def reset():
+            win.reset_color()
+            win.text.setText("Reset")
+            p1.reset_player(b1)
 
-        image_path = 'Atom//python//board.png'
+        reset_btn = QPushButton("Reset")
+        reset_btn.clicked.connect(reset)
+        reset_btn.setMaximumWidth(100)
+        grid2.addWidget(reset_btn,5,1)
+
+
+        image_path = 'Atom//python//Pythonsidi//board.png'
         board = QPixmap(image_path)
         board_label = QLabel(self)
         board_label.setPixmap(board)
         hbox.addWidget(board_label)
-        
-
-        # reset = QPushButton("Reset")
-        # reset.clicked.connect(self.reset_color)
-        # grid2.addWidget(reset,5,1)
-        # def reset():
-        #     self.reset_color()
-        #     game.Player.reset()
-        #     win.text.setText(" ")
 
         self.text = QLabel()
-        grid2.addWidget(self.text,5,1)
+        grid2.addWidget(self.text,5,2)
         # grid2.setColumnStretch(0,1)
 
         for label in self.lbl:
@@ -92,6 +93,8 @@ class Window(QWidget):
 
         self.show()
 
+    
+
     def change_color(self, tiles):
         if tiles == None:
             return
@@ -127,6 +130,8 @@ def move():
     else:
         win.change_color(list(tiles))
         win.text.setText(tiles[2])
+
+
 
 app = QApplication(sys.argv)
 win = Window()
