@@ -51,17 +51,16 @@ class Player:
 
         if self.position.id + move_by > b1.max:
             txt = (f"{self.name} || Dice: {move_by:02} || No Move")
-            self.throws += 1            
             print(txt)
             return txt
 
         old_position = self.position
         self.position = b1.board[int(self.position.id) + move_by - 1]
-
         self.moves += 1
+
         if self.position.id == b1.max:
             txt = (f"{self.name} Wins!! \nMoves: {self.moves} \nThrows: {self.throws}")
-            txt2 = (f"{self.name} Wins!! Moves: {self.moves} Throws: {self.throws}")
+            txt2 = (f"{self.name} Wins!! || Dice: {move_by:02} ||Moves: {self.moves} Throws: {self.throws}")
             temp = self.position.id
             print(" --> ",txt)
             self.throws = 0
@@ -90,7 +89,7 @@ class Player:
             print(" --> ",txt)
             return old_position.id, self.position.id, txt
 
-    # def reset(self):
-    #     self.throws = 0
-    #     self.moves = 0
-    #     self.position = Board.b1.board[0]
+    def reset_player(self, b1):
+        self.throws = 0
+        self.moves = 0
+        self.position = b1.board[0]
