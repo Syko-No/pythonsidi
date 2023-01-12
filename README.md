@@ -1,6 +1,8 @@
 # pythonsidi
 Simple Snake Ladder Game
 
+**gui.py starts the game**
+
 Very simple, you click button to throw dice.
 Keep throwing dice until you win :D
 
