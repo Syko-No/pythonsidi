@@ -44,7 +44,7 @@ class Window(QWidget):
         grid2.addWidget(reset_btn,5,1)
 
 
-        image_path = 'Atom//python//Pythonsidi//board.png'
+        image_path = 'PythonSidi\\board.png'
         board = QPixmap(image_path)
         board_label = QLabel(self)
         board_label.setPixmap(board)
